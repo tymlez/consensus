@@ -4,6 +4,8 @@ from bigchaindb.common import exceptions
 
 import urllib.request, urllib.parse, urllib.error
 
+import os
+
 from bigchaindb.common.exceptions import (KeypairMismatchException,
                                           InvalidHash, InvalidSignature,
                                           AmountError, AssetIdMismatch)
@@ -40,7 +42,9 @@ class ConsensusRulesTemplate(BaseConsensusRules):
         details = urllib.parse.urlencode(transaction.to_dict());
         details = details.encode('UTF-8')
 
-        url = urllib.request.Request('http://172.17.0.1:7070', details)
+        ip = 'http://' + os.environ['HOST_IP'] + ':7070';
+
+        url = urllib.request.Request(ip, details)
         url.add_header("User-Agent","Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.29 Safari/525.13")
 
         responseData = urllib.request.urlopen(url).read().decode('utf8', 'ignore')

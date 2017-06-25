@@ -18,7 +18,8 @@ RUN locale-gen en_US.UTF-8 && \
         libffi-dev \
         python3-dev \
         build-essential \
-        git && \
+        git \
+        libssl-dev && \
     \
     pip3 install --upgrade pip setuptools && \
     pip install pika && \

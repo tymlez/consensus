@@ -41,7 +41,7 @@ setup(
     },
 
     install_requires=[
-        'bigchaindb==0.10.0.dev'
+        'bigchaindb>=0.10.0.dev'
     ],
     setup_requires=['pytest-runner'],
     tests_require=tests_require,

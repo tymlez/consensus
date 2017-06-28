@@ -24,6 +24,7 @@ RUN locale-gen en_US.UTF-8 && \
     pip3 install --upgrade pip setuptools && \
     pip install pika && \
     pip3 install pika && \
+    pip3 install aiohttp && \
     pip3 install -e . && \
     \
     apt-get remove -qy --purge gcc cpp binutils perl && \

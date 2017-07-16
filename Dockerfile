@@ -19,6 +19,7 @@ RUN locale-gen en_US.UTF-8 && \
         python3-dev \
         build-essential \
         git \
+        git-core \
         libssl-dev && \
     \
     pip3 install --upgrade pip setuptools && \

@@ -34,8 +34,6 @@ RUN locale-gen en_US.UTF-8 && \
     rm -rf /usr/share/perl /usr/share/perl5 /usr/share/man /usr/share/info /usr/share/doc && \
     rm -rf /var/lib/apt/lists/*
 
-WORKDIR /usr/src/app
-RUN git clone https://github.com/mailgun/expiringdict.git ./expiringdict
 WORKDIR /usr/src/app/expiringdict
 RUN python3 setup.py build && \
     python3 setup.py install

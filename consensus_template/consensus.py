@@ -2,6 +2,8 @@ from bigchaindb.consensus import BaseConsensusRules
 
 from bigchaindb.common import exceptions
 
+from bigchaindb import config
+
 import urllib.request, urllib.parse, urllib.error
 
 import os
@@ -42,7 +44,11 @@ class ConsensusRulesTemplate(BaseConsensusRules):
         details = urllib.parse.urlencode(transaction.to_dict());
         details = details.encode('UTF-8')
 
-        ip = 'http://' + os.environ['HOST_IP'] + ':' + os.environ['HOST_PORT'];
+        txIp = config['consensus']['txIp'];
+        txPort = config['consensus']['txPort'];
+
+
+        ip = 'http://' + txIp + ':' + txPort;
 
         url = urllib.request.Request(ip, details)
         url.add_header("User-Agent","Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.29 Safari/525.13")
